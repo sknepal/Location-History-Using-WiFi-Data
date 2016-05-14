@@ -1,0 +1,330 @@
+<html>
+<head>
+<title></title>
+<style type="text/css">#map_wrapper {
+    height: 400px;
+}
+
+#map_canvas {
+    width: 100%;
+    height: 100%;
+}</style>
+
+<script>
+</script>
+
+</head>
+
+<body>
+<div id="map_wrapper">
+    <div id="map_canvas" class="mapping"></div>
+</div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript">
+jQuery(function($) {
+    // Asynchronously Load the map API 
+    var script = document.createElement('script');
+    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+    document.body.appendChild(script);
+});
+
+function initialize() {
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+                    
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    map.setTilt(45);
+        
+    // Multiple Markers
+    var markers = [['PPPoE BSD ParkHorizon, KHARAYOO, TP-LINK_BB63F8, bharat guest house, Suvadeep2, Wise_Vianet',
+  27.7350677,
+  85.3097375],
+ ['TP-LINK_A2A1E0, Tenda_3276B8, sknepal', 27.7513698, 85.33446409999999],
+ ['nischal, HP-Setup-C4-Officejet Pro 8600, sadhikhola',
+  27.747838299999998,
+  85.3319539],
+ ['hamro ghar, Everest , ., TP-LINK_BFB97E, ART G, kashak',
+  27.7437139,
+  85.33002139999999],
+ ['private, Salita-Wifi, TP-LINK_6B0676, TP-LINK_E86696, SHAMBALA_WIFI, PPPoE Basundhara Mini, Broadlink WIFI_Basundhara, Maskey, Shuva Adhikari Travels, Caravan, barapress, ALLIANZA, muldhar1, Shrestha wifi, Pandey1, TP Link001, rupa, Helping, Broadlink BSD Maharajgunj, CPN_UML_PUBLIC, CPN_UML, broad link',
+  27.7424781,
+  85.3333603],
+ ['Searching..., Tenda_1C7F31, Tenda_0E54C0, netsurfer, youngrunners, ADYYYml2ZWVrZHV0dGEu, Gwarkho WIFI 2',
+  27.6632283,
+  85.330711],
+ ['Wireless wifi, EXXURA, SPOT, Police 2, CONNECTING HEART, HEMS, ASUS, kwality, samintl, PPPoE MRJ Chowk, b.f.academy, RM International, Ishan _Ground, Tenda_1CE691, Bruce, CLASSICTECH CT WIFI, deepti, NETGEAR, Broadlink MRJ Chowk, S.kunwar',
+  27.7422543,
+  85.33269510000001],
+ ['Niresh Syangden., TL-W740N ', 27.7487003, 85.33243499999999],
+ ['Easy group, LLTC, TP-LINK_123fine', 27.674039699999998, 85.372777],
+ ['TP-LINK_6213E0, hira_wifi, bensu, Tenda_0CFC39, Born To Be Wild, Bishal paudel, Digicom(sam)',
+  27.748541,
+  85.3320559],
+ ['Narshima, ADYYc2F1Z2F0YmFyYWls, ADM, TP-LINK_9F23C6, Pooja, 123456789',
+  27.7148962,
+  85.34629369999999],
+ ['FRONTECH, ntc, SAA, DWIT-hotspot, TP-LINK_789639, 11n AP, NETMAXWIFI, sAG, deerwalk-hotspot',
+  27.712401399999997,
+  85.3424799],
+ ['Sanjay, NEPAL, AltrixWifi1@Rs200#Ph9808377611', 27.7172661, 85.3468499],
+ ['Karuna, Niresh Syangden', 27.7479625, 85.3327453],
+ ['TP LINK, megatron, shakyaimpex, Ubp prime, toshiba', 27.744964, 85.3315472],
+ ['kalash, still alive, jhon bon jovi, one piece, TP-link',
+  27.7467939,
+  85.3320203],
+ ['TP-LINK_F6523A, Shrestha, Lee languge, Tenda_3AA920, Kripa Beauty Parlor, Sirka, Paurakhi, MSM & TG, URGN, wlinkdhu, STAFF, dhapasi',
+  27.742233199999998,
+  85.3332693],
+ ['krishna, BHxX-4KSF4KSu4KSw, ALIEN_WIFI, TP-LINK_DB11EE, GSPandey, ADYYYWxwcw',
+  27.7461548,
+  85.3318725],
+ ['yanzi, irusha100, asha, hsff2012', 27.7478388, 85.32933659999999],
+ ['Wlink Main, VASAVI, sanghai@home, adsl-87dd53-haha, shrestha123, Psneha, LADDU',
+  27.7124426,
+  85.3436186],
+ ['hunter X hunter, pasal, HIMANI, Poudel@ramesh, AltrixWifi5@Rs200#Ph9808377611',
+  27.7125436,
+  85.34416689999999],
+ ['SOuryaEnergy123, CADI, ICHE CIMA', 27.7215633, 85.346007],
+ ['Deadshot, DWIT-Library, mountain, Acer Aspire V15 Nitro 960M',
+  27.7124204,
+  85.3425419],
+ ['wifi, BHOJRAJ, Namaste, Ravi, Alpha, Narsimha, TP-LINK-adsl, none, Tenda_0E9AE8, pinkudinku, Toplink, DIGICOM - ZING, SHIKHA, Wi-fi Time',
+  27.7459772,
+  85.33180279999999],
+ ['ODD-2016-G2, KCMFWiFi, KCMWiFi, KCMSWiFi, Mahato Companies, IDMC, Imadole WIFI2, PPPoE Imadole Hattiban, ODD-2016-G1',
+  27.6631575,
+  85.32994149999999],
+ ['BFC, rajesh, HABI, npl_198, ORC, bikash_home, Universal, Skycable tv, Soft Planet, House Targaryen, TP-LINK_, PPPoE Gwarkho WIFI 2, ABI Nepal',
+  27.6638745,
+  85.3300553],
+ ['Nuwakot, TP-LINK_A2DB1C, NEEVAN, my home, udash, TP-LINK_DE9CD0, PPPoE BSD Maharajgunj, Chakprathworldlink, metro, Connecting frns, VASHNAVI',
+  27.7433634,
+  85.3300249],
+ ['Yudin, TP-LINK_B8A7F4, DIGICOM@wifi, NationalNamoBuddha, Gatishil_Saving, ABI_CHABHAIL, iMac-Net',
+  27.7422458,
+  85.3332829],
+ ['Bravo Tamang, harsha, TP_Link_Wifi, milhyuwang rai, galaxy, MANISH, Sandy',
+  27.7451825,
+  85.33169149999999],
+ ['PROLINK, L@Net WiFi, TP-LINK_F14203', 27.6928752, 84.44141239999999],
+ ['BJqk-c2toYXRpd2FkYTM5, unique, CheLsea, Mina, euro-asia, OFFICE WIFI',
+  27.7133523,
+  85.3451561],
+ ['TP-LINK_BE32FC, Wi-Fi.com', 27.750765599999998, 85.3352396],
+ ['Santosh_Network, khanalnetwork, TP-LINK_C5280F, SAMSUNG, bikash_wifi, SKY LINK TRAVELS, TP-LINK_11AE',
+  27.747178100000003,
+  85.3321],
+ ['DWS - IT, DWIT-hotspot1', 27.7122496, 85.34248319999999],
+ ["Rajesh's iPhone, utsab-wifi, BINUP_Network_2, Jayabageshowri-home, The Power Of Wifi, TP-LINK_FB851D, AO5510",
+  27.711784899999998,
+  85.3425931],
+ ['star communication, HONS WIFI, Gorkhamodel.com, anchal tp link',
+  27.7421908,
+  85.33306000000002],
+ ['SUBISU, radika, pak2014, kchomewifi, Basundhara1, Police, GHIPL_out_second, GHIPL_out_first, Bhatbhateni-WiFi-01, gsharma',
+  27.741474999999998,
+  85.3312773],
+ ['bijaya, Devendra, ashim, default, Mandikatar WIFI2', 27.745269, 85.329531],
+ ['razu, 015159325 greenchilli , SUNGABHA, kunwar wifi, Namaste gandaki',
+  27.7522305,
+  85.32644359999999],
+ ['TP-LINK_AF0570, Edenbridge, barshu, arbin, September30_free_wifi, Tenda_1C8FD1, Wi-Fi, stillalive, Nirmala, Prisha, Nikesh, BCHTC, NETMAX-WIFI, MERIDIAN OVS, D_Link, Khemraj 8520, greenstar-WiFi, Ishan Admin, Yak Movies, God, BL_Mgmt_85, NAASA WLINK, automobiles, TME_wifi, Corporate Broadlink, TPlink321, Niraamayae, IOM_PG_Hostel2, Broadlink WIFI, Kathmandu, Shakya_Wifi, SES, Nepal carpet exporters, Mandala, ntadsl, SPMS',
+  27.7423517,
+  85.33228989999999],
+ ['Private Network, BuN1-Z3Jpc2hhbWE3Nw, TP-LINK_88CFDE',
+  27.712881199999998,
+  85.3460767],
+ ['ARYAL AGRO, sushma, TCN, CSN', 27.7129807, 85.3442141],
+ ['Parikarma, Nawali Saving & Credit Co-Opr. L, jbsstationery, Go Home Tourist, Shreeyon, Tenda_2679A0, Bageshwori pharma, AndroidA, Healthnet, nabin-wifi',
+  27.711177199999998,
+  85.34271319999999],
+ ['Sabal Mart, PPPoE Chandole WIFI1, Chandole WIFI1, newnepal',
+  27.7314948,
+  85.3443552],
+ ['surendra, NTCwiFI', 27.712536099999998, 85.345199],
+ ['Keshu parts, Global Digital, sarawifi, Global Digital 2, Lavilla2, shova, Chadani',
+  27.7124329,
+  85.34304949999999],
+ ['Kalwireless1, Home, _AccessDenied_, DaMoDaR_GiRi, CRITICAL, Red Devils',
+  27.745935499999998,
+  85.3318673],
+ ['JONNEY, shiddhika', 27.750362000000003, 85.33314399999999],
+ ["HariKrishna, dcresidence, hikmat.khadka, BigeshBhatiz, appolo11, jobs, Car Key, Apollo, Tenda_0CEDD9, mahesh, Tenda_4C0568, DENIM, Wezz'sWorld, UnitedWIFI, Unique, TP-LINK_C88C29, Authorized, greenpoint, TP-LINK_A83ECD, Adrin, Tenda_0CD449, wireless, shristeethapa, thapabijay, TP-LINK_2BDF14, May Peace Prevail, smc, TP-LINK_4F5A71",
+  27.7473144,
+  85.32994520000001],
+ ['Future AP, KAKEHASHI, pagetech, Makhan , BnK, SHAH, Sushma, TP-LINK_AB2F3A, Hamro_wifi, british',
+  27.717973699999998,
+  85.346847],
+ ['critical, pagetechnepal, TOTOLINK N300RH, eduguide, ADYYc2Ftc3VuZw, Speed, Shuvatimes',
+  27.7178221,
+  85.34679729999999],
+ ['Tenda_1CA859, TOSHIBA, marick, Upreti, Parajuli Niwas, Tenda_310430, deekeshfs, Pinky, Kantipur College, Tenda_424AA0, belkin.7bdf, Poudel, Mahadevtar WIFI, samsung, Rs 30 call 9849068991, netis',
+  27.741335799999998,
+  85.32162199999999],
+ ['Monkey de Luffy, sedeielectronics, jim gauchan, ANU',
+  27.742384299999998,
+  85.33182819999999],
+ ['mitra0019, TP-LINK_4AB472, MP', 27.712744999999998, 85.34393820000001],
+ ['Texas CSIT, vaidehi, prabha', 27.713230799999998, 85.3441229],
+ ['DIRECT-HH-BRAVIA, BNA , RAJ_Network, CHANDIKA, Mountain',
+  27.7444095,
+  85.33165199999999],
+ ['Mitrapark0119, astha, Sangats, PANDEY', 27.713494, 85.3448303],
+ ['Hilltop, Malla_Home, dilasha, om_3, Tenda_26E469, sourya energy, sujatak, SOLID FUTURE, Chelsea, chmitrapark, netmax2',
+  27.713016200000002,
+  85.3454004],
+ ['TRPANDEY, Aum', 27.7515711, 85.33426329999999],
+ ['Destination Institute, Bouddha Fulbari, dharana',
+  27.714109999999998,
+  85.34485459999999],
+ ['Static Ip, South-West, Broadlink Network, TP-LINK_4AA582, BL_Mgmt_122, (-_-), Nepal Telecom FreeWiFi, TP-LINK_7F6BE9',
+  27.678236599999998,
+  84.4299667],
+ ['Raj Trading Concern, keet mar wifi, TP-LINK_256ED7, lamsalmobile, FQ3, TP-Link, arirang, Kosmos',
+  27.7119681,
+  85.3439566],
+ ['RWI, spd, Tenda_11DB30, Maheshdhakal, mitraaarts, aavaz, shresthafamily, TP-LINK_DB1226, Radio Tamor, BlackHawk, no password, Ambe_Apartment, mediaschool, JHA BK, BKD, Princess, Himal, prakash_wifi, CHERRY',
+  27.7143612,
+  85.34479139999999],
+ ['Deerwalk-IT, dell, Connectify-DWIT', 27.7122823, 85.342455],
+ ['Bighall, 533D, broadlink', 27.7194199, 85.3463845],
+ ['tamsnepal, Tenda_0E4310, PROLiNK, Prasun Wifi, Tiara, Tenda_11EB48, TP-LINK_DAE56D, shreeparsad_wifi, Ghatthaghar faced Bode, sanjog wifi, jeetendra, esewa_sanothimi, .::| AVIYAS |::., Ktange Home, binodbraja, ADYSFVBV0VJ, ADYYa2lyYW53YWdsZTAw, HassleFree',
+  27.678708099999998,
+  85.37587909999999],
+ ['WIPRO COMPUTER, FLEX PRINT FREE, jalpa, Digicom, PMWIFI, radheradhegeuesthouse, new sumitra traders, AriZ, Airporthotel-WIFI, broadtel messenger, Broadlink Air Sinamangal, TP-LINK',
+  27.7108337,
+  85.3444061],
+ ['KR MEDICAL, Handigaon WIFI1, Vegeta , Radiance',
+  27.716007,
+  85.33769889999999],
+ ['sukhadprabhat, EkeXN-REVTS1RPUC0xTUhWOU5J, MySsid, Dazzle wi-fi',
+  27.7256169,
+  85.34517439999999],
+ ['WorldLinkFiber, TP-LINK_EFB872, dare davil, A82841, Broadlink, interfacecomputer, PATHFINDER_6637427, jeewan, TP-LINK_42F2BE, brainstorm, TP-LINK_788C72, Prabin WiFi, ADYYbHN1YmFzaDM2NA, CTEVT 2, ss_medical',
+  27.6741188,
+  85.3740749],
+ ['soumya, Woodland WIFI1', 27.7089258, 85.3152751],
+ ['PPPoE Hadigaun WIFI, TP-LINK_8E6143, Wifi-Samjana, TP-LINKKTM',
+  27.712154299999998,
+  85.34225409999999],
+ ['chari, arjunbajaj, TP-LINK_51EB88, ADYYSFVBV0VJ, Pokhara Pizza House',
+  27.730611699999997,
+  85.3453056],
+ ['saurav tamang, GlobDig, GlobalDigital Wlink, bnk, TP-LINK_A2AF77',
+  27.712711199999998,
+  85.3437715],
+ ['surabhi-wifi, ToP10DiGiTaLPhOtOStUdIo, TP-LINK_8B7F80, homes nepal, e-Support',
+  27.7472118,
+  85.33071029999999],
+ ['RIZVAN, Jayani_home, SazzN_Wifi, sumiran, Milantole, Dr.Meena, GRANDE 12',
+  27.751987800000002,
+  85.32648449999999],
+ ['Dhitalz, sushana, websurfer wifi', 27.7491749, 85.33170609999999],
+ ['jerry-hotspot, linksys, Chamling', 27.711857499999997, 85.3424472],
+ ['Ishan 5th Floor, ozone, 2way, Mercyeducation, Airport Sekuwa, chelsea, avengesh',
+  27.739594399999998,
+  85.3379649],
+ ["links, TP-LINK_B267BA, DHUNGEL'S, Taranath, Mjram, Sunshine, TP-LINK_E6B072, TP-LINK\\TL-WR740N, Simplicity, BlackBerry, stop, Kathmandu cable, YoLo, AD, Digicom2, Tenda_087FE8, virus infected, WebSTAR, BFLm-Y2hhdWRoYXJ5a3VtYXI2NzI, PPPoE MRJ Bhatbhateni, BL_Mgmt_84, Bahsek, ....@, universal cafe, Tenda_1CE649, Broadlink MRJ Bhatbhateni, R&D Bridge, RND classic, Optus, Rose, sambhanda, TP-LINK_F01935, Rayamajhi  wi-fi, Tenda_329BB8, tanpura, GyanSagar, NTC11, ktm, HALESI, TP-LINK_76B2D4, websurfer, Manash",
+  27.748548099999997,
+  85.3322901],
+ ['Tenda_2676C0, Liverpool , Dak wifi, CPN, saujan-wifi, Mobhira Oversease, bn, Hexadecimal, PROLiNK_PRN2001_1ccedb, GATEWAY_CONSULTANCY, Office WIFI, shirley, JU-JU Tattoo, kunja, anil, NTC, wiFi',
+  27.7178893,
+  85.34702469999999],
+ ['DBMI NEPAL, windows, Boko Club, FreeWiFi, PPPoE Dhumbarahi WIFI2, TP-LINK_EA0AB0, Delta33, juna, Namaste Network, Broadlink Wifi, B2PW-cGF0ZWwuc3VqYXRhMzIx, ADYYTWljcm9tYXg, Hispeed internet, Tenda_0EC018, Siten',
+  27.7171459,
+  85.34671759999999],
+ ['Pashupatinath, Gairabari, Susoban, Link, Home WiFi, nishak_banu, Rishal raj maskey, GOLDWEB, Sky goals, policedai, Prshant, Clean Energy product intl pvt lt, suryacf, TP-LINK_F49EA6, arpana, Bishwa, niran, UCHP, myhome',
+  27.747316599999998,
+  85.3321168],
+ ["Dahaljee, shrestha, Reddevil$$!!, myLGNet, iLyfe Institute, Yes mobil, Connectify-0, semicolon, Krishna, Trade_Link_2227E0, Follow Me, Basnet house, Prithwi, GRN53, SHIVA_KHATRI, ucash, BDS_WIFI, Virus Meridian, Private test S.L.C./ Regular , Mahanagar Yatayat, Lee Institute, Home , Sam, belkin, ADYYaW50ZXg, ADYYbWFuaXNob2xpMDA1, alphabeta, Smarika_Store, Digicom123, Nepal Cables, Don't ask pasward , austasiddhi",
+  27.7424012,
+  85.3321529],
+ ['home wifi, amityglobal, Suzana wifi', 27.7509131, 85.3364375],
+ ['RL-SSID1, EMD Mahasakha, batman, TP-LINK_FE6EA4, via.zebu, SG Int, TRENDnet658, UBNT, American Girl Ladies Fancy, NT WiFi - 118, suraz, Sky shop nepal pvt.ltd, khp, Santonza, Mega',
+  27.7007449,
+  85.3129905],
+ ['home, ramitruben, Arab, Two_Brothers',
+  27.748026399999997,
+  85.32917959999999],
+ ['Dell, Tenda_11C230, KHIMBULE, MBG, Ramesh-wifi, Free Wifi, barsa, Ganesh, Baibhabi, Yaman Wifi, MadhavWiFi, GC NIWAS, WHAT THE HELL',
+  27.7434342,
+  85.33242729999999],
+ ['DIGITAL WIFI, GD Wlink Sec Line, LAVILLA1, mukunda karmacharya, voice, ACER-PC_Network, Virus!',
+  27.712269199999998,
+  85.34332289999999],
+ ['divinity, janak', 27.747064299999998, 85.33218079999999],
+ ['BL_Mgmt_86, Dawn & Dusk, shreyan', 27.738636999999997, 85.3391364],
+ ['SECURED LIFE INT, tazanna, mokshyalaxmi.com, Sher gummi',
+  27.7176375,
+  85.3469014],
+ ['Metro, Bluebird, Follow Me Saving & Credit Co-ope, Kantipur, jpt, RAJU, mohan, PPG, GARANTIA',
+  27.743615899999998,
+  85.33001399999999],
+ ['lion house, Neupane brothers, D-Link123, RK Shrestha, gurung, pokharel_family, TP-LINK_CF9C8B, Subu, Connectify-me, Nointernetconection, Mount Glory School, Virus, Giri_wifi',
+  27.7482895,
+  85.3320372],
+ ['hub, TP-LINK_BA7C46grg', 27.7434764, 85.3320981],
+ ['OSU!, TP-LINK_B82178, Free wifi, Manchester United, noblesse, DKS,                               ',
+  27.748046799999997,
+  85.3310748],
+ ['Tenda, TP-LINK_9F68A0, janakad, Bouddha2070,  Password hanera dekha , caravan, CIMP, CaravanDigicom, rbu, alfabeta, Khumbu_Wifi, Trade_Link_5745D8, Samit',
+  27.742783799999998,
+  85.3325875],
+ ["BuT6-R1QtSTkxOTU, Acetravels.comMaharajgunj, IGRESOURCES, voguebeautysaloon, FOUNDATION, Default, SUBITA NEUPANE, sweet home, Wonderland, Barrons , grg, Tenda_0CD5D1, Ghar, Daisy, September30, Tenda_119F80, piplink wi- fi, princess, WHy c@n'T ! ???, makhula, yOU C@Nt!``  , freewifi, DIGICOM, TP-LINK_621AC6, Bijju, SDS",
+  27.748714099999997,
+  85.33240909999999],
+ ['munmun, Slark, SANGATS', 27.7121537, 85.3429761],
+ ['F ULID A, BIKERS NEPAL, Shyam2, outlawz, Nepal, Dhumbarai Savings, T v Filmy, SANS-PC_Network, #DANGERDELTA',
+  27.748549399999998,
+  85.3323194],
+ ['GP120, dhamchoe, Bijay, Japan Consultancy, SBUDDHA, TP-LINK_BBFF52, kathmandu, net chalauna paisa tirera chalau, BROADBAND, Laxmi WiFi, pushpanjali, mitra0119, Charumati',
+  27.7137137,
+  85.3447477],
+ ['chabsw, NT WiFi 1, NT WiFi, EUROASIA, k33_CHABAHIL', 27.7140551, 85.345579],
+ ["tamsaling pradesh, dairus, Potala_Mobile_Concern, Sregmi, tyata-wifi no password , Arigatou Japanese Language Scl, Valley Int'l Consultancy, Adventure Time , Lexicon, Marron HOUSE, Madhav, WhiteWalkers, JUJU Tattoo ink, Rikesh, Tenda_315D09, Jimee ko Guest House, DIGICOM - ctepl, Padma Devi Regmi",
+  27.7164662,
+  85.3461805]];
+                        
+  
+        
+    // Display multiple markers on a map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+    
+    // Loop through our array of markers & place each one on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map
+        });
+        
+        // Allow each marker to have an info window    
+       google.maps.event.addListener(marker, 'click', (function(marker, i) {
+	console.log(i);
+            return function() {
+                infoWindow.setContent('<div class="info_content">' +'<h3>WiFi List:</h3><p>' + markers[i][0] + '</p></div>');
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
+    }
+
+    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(10);
+        google.maps.event.removeListener(boundsListener);
+    });
+    
+}
+</script>
+
+</body>
+</html>
